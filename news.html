@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World of WarPulse - News</title>
     <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes snowflakes-fall {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
+        @keyframes snowflakes-shake {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(80px); }
+        }
+
         body {
             font-family: "Arial", sans-serif;
             background: url('https://cdn.wallpapersafari.com/91/66/RZhtyD.jpg') no-repeat center center fixed;
@@ -16,22 +37,43 @@
             width: 953px;
             height: 339px;
             overflow: hidden;
+            animation: fadeIn 2s ease-in;
+            position: relative;
         }
+
+        .snowflake {
+            position: absolute;
+            top: -10%;
+            width: 1em;
+            height: 1em;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: snowflakes-fall 10s linear infinite, snowflakes-shake 3s ease-in-out infinite;
+        }
+
+        .snowflake:nth-child(odd) {
+            animation-duration: 8s, 2s;
+        }
+
         header {
             background-color: rgba(0, 0, 0, 0.8);
             padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
+
         header h1 {
             font-size: 1.5em;
             color: #ffd700;
             margin: 5px 0;
         }
+
         header p {
             margin: 0;
             font-size: 0.9em;
             color: #f0e68c;
         }
+
         main {
             padding: 10px;
             display: flex;
@@ -39,6 +81,7 @@
             align-items: flex-start;
             justify-content: space-between;
         }
+
         .news-item {
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 8px;
@@ -46,17 +89,21 @@
             padding: 10px;
             flex: 1;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            animation: float 4s ease-in-out infinite;
         }
+
         .news-item h2 {
             font-size: 1.2em;
             color: #ff4500;
             margin: 5px 0;
         }
+
         .news-item p {
             font-size: 0.9em;
             color: #f8f8f2;
             margin: 5px 0;
         }
+
         footer {
             margin-top: 5px;
             padding: 5px;
@@ -67,6 +114,12 @@
     </style>
 </head>
 <body>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+
     <header>
         <h1>World of WarPulse News</h1>
         <p>Stay updated with the latest updates, events, and announcements!</p>
