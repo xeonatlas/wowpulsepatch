@@ -21,25 +21,20 @@
             100% { box-shadow: 0 0 5px #4e54c8, 0 0 10px #4e54c8; }
         }
 
-        @keyframes shimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
+        /* Removing the shimmer animation since the body background will now be transparent */
+        
         /* GLOBAL STYLES */
         body {
             font-family: "Arial", sans-serif;
             margin: 0;
             padding: 0;
-
-            width: 762px;
-            height: 271px;
+            width: 953px;
+            height: 339px;
             overflow: hidden;
 
-            background: linear-gradient(135deg, #24204a, #3a2f71, #553d91, #8f94fb, #4e54c8, #24204a);
-            background-size: 600% 600%;
-            animation: shimmer 30s linear infinite;
+            /* Make background transparent */
+            background: transparent;
+
             position: relative;
             color: #f8f8f2;
             text-align: center;
@@ -49,14 +44,14 @@
             align-items: center;
             box-sizing: border-box;
             animation: fadeIn 2s ease-in;
-            font-size: 0.8em; /* Scale down text slightly to match UI size */
         }
 
+        /* Decorative frame, can keep as it does not fill background, just borders */
         body::before, body::after {
             content: "";
             position: absolute;
-            border: 2px solid #8f94fb; /* slightly thinner borders due to scale */
-            border-radius: 8px;
+            border: 3px solid #8f94fb;
+            border-radius: 10px;
             pointer-events: none;
             z-index: 999;
         }
@@ -64,38 +59,38 @@
         body::before {
             top: 0; left: 0;
             width: 100%; height: 100%;
-            box-shadow: 0 0 10px #8f94fb, 0 0 20px #4e54c8 inset;
+            box-shadow: 0 0 15px #8f94fb, 0 0 30px #4e54c8 inset;
         }
 
         body::after {
-            top: 3px; left: 3px;
-            width: calc(100% - 6px);
-            height: calc(100% - 6px);
-            box-shadow: 0 0 5px #4e54c8 inset;
+            top: 5px; left: 5px;
+            width: calc(100% - 10px);
+            height: calc(100% - 10px);
+            box-shadow: 0 0 10px #4e54c8 inset;
         }
 
         header {
             background-color: rgba(0, 0, 0, 0.6);
-            padding: 3px 8px;
-            margin-top: 3px;
-            border-radius: 4px;
+            padding: 5px 10px;
+            margin-top: 5px;
+            border-radius: 5px;
             border: 1px solid #8f94fb;
-            box-shadow: 0 0 5px #8f94fb;
+            box-shadow: 0 0 10px #8f94fb;
         }
 
         header h1 {
-            font-size: 1.2em;
+            font-size: 1.5em;
             color: #ffd700;
-            margin: 3px 0;
-            text-shadow: 0 0 3px #ffd700, 0 0 5px #ffd700;
+            margin: 5px 0;
+            text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
             font-weight: bold;
         }
 
         main {
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
-            gap: 5px;
-            padding: 5px;
+            gap: 10px;
+            padding: 10px;
             align-items: center;
             width: 100%;
             height: 100%;
@@ -104,8 +99,8 @@
 
         .box {
             background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 6px;
-            padding: 10px;
+            border-radius: 8px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -125,8 +120,8 @@
             content: "";
             position: absolute;
             top: -2px; left: -2px; right: -2px; bottom: -2px;
-            border-radius: 6px;
-            border: 1px solid #4e54c8;
+            border-radius: 8px;
+            border: 2px solid #4e54c8;
             animation: glowingBorder 3s infinite;
             pointer-events: none;
         }
@@ -134,10 +129,10 @@
         .discord-logo {
             background: url('https://upload.wikimedia.org/wikipedia/commons/9/98/Discord_logo.svg') no-repeat center;
             background-size: contain;
-            width: 60px;
-            height: 60px;
-            filter: drop-shadow(0 0 3px #72f7ff);
-            margin-bottom: 5px;
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 0 5px #72f7ff);
+            margin-bottom: 10px;
         }
 
         .update-info {
@@ -146,26 +141,25 @@
         }
 
         .update-info h2 {
-            font-size: 1.1em;
+            font-size: 1.3em;
             color: #ffd700;
-            margin-bottom: 5px;
-            text-shadow: 0 0 3px #ffd700, 0 0 5px #ffd700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
         }
 
         .update-info p {
             color: #f0f0f0;
-            line-height: 1.2em;
-            font-size: 0.9em;
+            line-height: 1.4em;
         }
 
         .server-status {
-            font-size: 1em;
+            font-size: 1.1em;
             color: #00ffcc;
-            text-shadow: 0 0 3px #00ffcc, 0 0 5px #00ffcc;
+            text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
         }
 
         .server-status p {
-            margin: 3px 0;
+            margin: 5px 0;
         }
 
         .box::after {
@@ -173,12 +167,12 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            border: 1px solid #ffd700;
-            border-radius: 6px;
+            border: 2px solid #ffd700;
+            border-radius: 8px;
             top: 0; left: 0;
             pointer-events: none;
             opacity: 0.5;
-            box-shadow: inset 0 0 5px #3a2f71;
+            box-shadow: inset 0 0 10px #3a2f71;
         }
 
     </style>
@@ -193,7 +187,7 @@
         </div>
         <div class="box update-info">
             <h2>🎉 Version 1.2.0 Released!</h2>
-            <p>Embark on epic quests and witness improved performance! Explore arcane forests, challenge monstrous foes, and uncover legendary treasures. Adventure awaits!</p>
+            <p>Embark on epic quests and witness improved performance in our new update! Dive into arcane forests, battle monstrous foes, and unearth legendary treasures. A truly magical experience awaits!</p>
         </div>
         <div class="box server-status">
             <p>🔵 Server Status: Online</p>
