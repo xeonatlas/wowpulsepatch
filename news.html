@@ -12,7 +12,7 @@
 
         @keyframes float {
             0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-5px); }
             100% { transform: translateY(0); }
         }
 
@@ -35,7 +35,7 @@
             padding: 0;
             text-align: center;
             width: 953px;
-            height: 339px;
+            height: 700px;
             overflow: hidden;
             animation: fadeIn 2s ease-in;
             position: relative;
@@ -77,17 +77,16 @@
         main {
             padding: 10px;
             display: flex;
-            flex-direction: row;
-            align-items: flex-start;
+            flex-wrap: wrap;
             justify-content: space-between;
         }
 
         .news-item {
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 8px;
-            margin: 0 5px;
+            margin: 10px;
             padding: 10px;
-            flex: 1;
+            width: 30%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             animation: float 4s ease-in-out infinite;
         }
@@ -102,6 +101,12 @@
             font-size: 0.9em;
             color: #f8f8f2;
             margin: 5px 0;
+        }
+
+        .news-item a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 0.9em;
         }
 
         footer {
@@ -136,6 +141,21 @@
         <div class="news-item">
             <h2>📢 Announcement 📢</h2>
             <p>We are excited to introduce new homebrew content coming soon! Stay tuned for more details.</p>
+        </div>
+        <div class="news-item">
+            <h2>🔥 Hotfix Incoming 🔥</h2>
+            <p>We will be applying a hotfix to address known issues. Expect downtime of 1 hour.</p>
+            <a href="#">Learn more</a>
+        </div>
+        <div class="news-item">
+            <h2>🌟 Community Spotlight 🌟</h2>
+            <p>This week, we feature the amazing creations of our talented players. Check it out!</p>
+            <a href="#">View gallery</a>
+        </div>
+        <div class="news-item">
+            <h2>🛠️ Maintenance Alert 🛠️</h2>
+            <p>Scheduled maintenance is planned for next Monday. Please plan your activities accordingly.</p>
+            <a href="#">Maintenance details</a>
         </div>
     </main>
     <footer>
