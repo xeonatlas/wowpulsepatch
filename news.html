@@ -66,7 +66,7 @@
 
         main {
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 10px;
             padding: 10px;
             align-items: center;
@@ -102,25 +102,6 @@
             border: 2px solid #4e54c8;
             animation: glowingBorder 3s infinite;
             pointer-events: none;
-        }
-
-        .discord-logo {
-            background: url('https://upload.wikimedia.org/wikipedia/commons/9/98/Discord_logo.svg') no-repeat center;
-            background-size: contain;
-            width: 80px;
-            height: 80px;
-            filter: drop-shadow(0 0 5px #72f7ff);
-            margin-bottom: 10px;
-        }
-
-        .server-status {
-            font-size: 1.1em;
-            color: #00ffcc;
-            text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
-        }
-
-        .server-status p {
-            margin: 5px 0;
         }
 
         .box::after {
@@ -193,14 +174,6 @@
             transition: width linear;
         }
 
-        /* Control for ticker time placement */
-        .ticker-controls {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            font-size: 0.9em;
-            color: #fff;
-        }
     </style>
 </head>
 <body>
@@ -208,28 +181,34 @@
         <h1>Welcome, Adventurer.</h1>
     </header>
     <main>
+        <!-- Left Box: Community Hub -->
         <div class="box">
-            <div class="discord-logo"></div>
-            <h2>Join Us!</h2>
+            <h2>Community Hub</h2>
+            <p>Connect with fellow adventurers! Visit our forums, join guilds, and stay up-to-date with community-driven events and tournaments.</p>
         </div>
+
+        <!-- Center Box: Ticker Updates -->
         <div class="box update-info">
             <div class="ticker-container">
                 <div class="ticker-item active">
-                    <h2>⚔️ Latest Version: v3.3.5a-WP-1.0.1b - Released 2024-12-07</h2>
-                    <p>Improved drop rates, Frozen Pulse event and much more! Full changelogs @ https://discord.gg/warpulse</p>
+                    <h2>⚔️ Latest Version: v3.3.5a-WP-1.0.1b</h2>
+                    <p>Released 2024-12-07 - Improved drop rates, Frozen Pulse event, and more! Full details @ https://discord.gg/warpulse</p>
                 </div>
                 <div class="ticker-item">
                     <h2>🐞 Known Issues</h2>
-                    <p>No known issues</p>
+                    <p>No known issues at this time.</p>
                 </div>
                 <div class="ticker-item">
                     <h2>❄️ Holiday Event Begins</h2>
-                    <p>Frozen Pulse is now live! Awarding 50% extra XP gains for quests and creature kills and mounts are 25% faster!</p>
+                    <p>Frozen Pulse is now live! Earn 50% extra XP on quests and kills, and enjoy 25% faster mounts!</p>
+                </div>
                 <div class="progress-bar-container">
                     <div class="progress-bar"></div>
                 </div>
             </div>
         </div>
+
+        <!-- Right Box: Server Status -->
         <div class="box server-status">
             <p>🔵 Server Status: Online</p>
             <p>Realm: WOWP1</p>
@@ -239,7 +218,6 @@
     <script>
         // Adjust ticker interval (in milliseconds)
         let tickerInterval = 10000; // 10 seconds
-        document.getElementById('ticker-time').textContent = (tickerInterval/1000) + 's';
 
         const items = document.querySelectorAll('.ticker-item');
         const progressBar = document.querySelector('.progress-bar');
