@@ -21,9 +21,6 @@
             100% { box-shadow: 0 0 5px #4e54c8, 0 0 10px #4e54c8; }
         }
 
-        /* Removing the shimmer animation since the body background will now be transparent */
-        
-        /* GLOBAL STYLES */
         body {
             font-family: "Arial", sans-serif;
             margin: 0;
@@ -31,10 +28,7 @@
             width: 953px;
             height: 339px;
             overflow: hidden;
-
-            /* Make background transparent */
             background: transparent;
-
             position: relative;
             color: #f8f8f2;
             text-align: center;
@@ -46,27 +40,11 @@
             animation: fadeIn 2s ease-in;
         }
 
-        /* Decorative frame, can keep as it does not fill background, just borders */
+        /* Remove the decorative frame (border) */
         body::before, body::after {
             content: "";
             position: absolute;
-            border: 3px solid #8f94fb;
-            border-radius: 10px;
-            pointer-events: none;
-            z-index: 999;
-        }
-
-        body::before {
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            box-shadow: 0 0 15px #8f94fb, 0 0 30px #4e54c8 inset;
-        }
-
-        body::after {
-            top: 5px; left: 5px;
-            width: calc(100% - 10px);
-            height: calc(100% - 10px);
-            box-shadow: 0 0 10px #4e54c8 inset;
+            border: none;
         }
 
         header {
@@ -135,23 +113,6 @@
             margin-bottom: 10px;
         }
 
-        .update-info {
-            font-size: 1em;
-            text-align: left;
-        }
-
-        .update-info h2 {
-            font-size: 1.3em;
-            color: #ffd700;
-            margin-bottom: 10px;
-            text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
-        }
-
-        .update-info p {
-            color: #f0f0f0;
-            line-height: 1.4em;
-        }
-
         .server-status {
             font-size: 1.1em;
             color: #00ffcc;
@@ -175,6 +136,71 @@
             box-shadow: inset 0 0 10px #3a2f71;
         }
 
+        /* Ticker Styles */
+        .update-info {
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ticker-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ticker-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+            width: 100%;
+        }
+
+        .ticker-item.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .ticker-item h2 {
+            font-size: 1.3em;
+            color: #ffd700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
+        }
+
+        .ticker-item p {
+            color: #f0f0f0;
+            line-height: 1.4em;
+        }
+
+        .progress-bar-container {
+            position: absolute;
+            bottom: 5px;
+            left: 10px;
+            right: 10px;
+            height: 5px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            transition: width linear;
+        }
+
+        /* Control for ticker time placement */
+        .ticker-controls {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 0.9em;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -186,13 +212,64 @@
             <div class="discord-logo"></div>
         </div>
         <div class="box update-info">
-            <h2>🎉 Version 1.2.0 Released!</h2>
-            <p>Embark on epic quests and witness improved performance in our new update! Dive into arcane forests, battle monstrous foes, and unearth legendary treasures. A truly magical experience awaits!</p>
+            <div class="ticker-container">
+                <div class="ticker-item active">
+                    <h2>🎉 Version 1.2.0 Released!</h2>
+                    <p>Embark on epic quests with improved performance! Dive into arcane forests, battle monstrous foes, and unearth legendary treasures. A magical experience awaits!</p>
+                </div>
+                <div class="ticker-item">
+                    <h2>⚔️ New PvP Arena</h2>
+                    <p>Clash with other players in the freshly unveiled Crimson Coliseum. Prove your might, earn glory, and claim exclusive rewards!</p>
+                </div>
+                <div class="ticker-item">
+                    <h2>🌱 Seasonal Event Begins</h2>
+                    <p>Celebrate the Harvest Festival! Collect rare herbs, craft special potions, and join festive community events for limited-time prizes.</p>
+                </div>
+                <div class="ticker-controls">
+                    <!-- You can modify the ticker time in the JavaScript variable below -->
+                    Cycle Time: <span id="ticker-time">10s</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
         </div>
         <div class="box server-status">
             <p>🔵 Server Status: Online</p>
             <p>Players Online: 128</p>
         </div>
     </main>
+
+    <script>
+        // Adjust ticker interval (in milliseconds)
+        let tickerInterval = 10000; // 10 seconds
+        document.getElementById('ticker-time').textContent = (tickerInterval/1000) + 's';
+
+        const items = document.querySelectorAll('.ticker-item');
+        const progressBar = document.querySelector('.progress-bar');
+        let currentIndex = 0;
+
+        function showNextItem() {
+            items[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % items.length;
+            items[currentIndex].classList.add('active');
+
+            // Reset and animate progress bar
+            progressBar.style.transition = 'none';
+            progressBar.style.width = '0%';
+            setTimeout(() => {
+                progressBar.style.transition = `width ${tickerInterval}ms linear`;
+                progressBar.style.width = '100%';
+            }, 50);
+        }
+
+        // Initial progress bar animation
+        setTimeout(() => {
+            progressBar.style.transition = `width ${tickerInterval}ms linear`;
+            progressBar.style.width = '100%';
+        }, 50);
+
+        setInterval(showNextItem, tickerInterval);
+    </script>
 </body>
 </html>
