@@ -3,33 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World of WarPulse - News</title>
+    <title>World of WarPulse - Latest Updates</title>
     <style>
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-2px); }
-            100% { transform: translateY(0); }
-        }
-
-        @keyframes snowflakes-fall {
-            0% { top: -10%; }
-            100% { top: 110%; }
-        }
-
-        @keyframes snowflakes-shake {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(80px); }
-        }
-
         body {
             font-family: "Arial", sans-serif;
-            background: url('https://cdn.wallpapersafari.com/91/66/RZhtyD.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
             color: #f8f8f2;
             margin: 0;
             padding: 0;
@@ -38,22 +21,6 @@
             height: 339px;
             overflow: hidden;
             animation: fadeIn 2s ease-in;
-            position: relative;
-        }
-
-        .snowflake {
-            position: absolute;
-            top: -10%;
-            width: 1em;
-            height: 1em;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: snowflakes-fall 10s linear infinite, snowflakes-shake 3s ease-in-out infinite;
-        }
-
-        .snowflake:nth-child(odd) {
-            animation-duration: 8s, 2s;
         }
 
         header {
@@ -68,103 +35,69 @@
             margin: 5px 0;
         }
 
-        header p {
-            margin: 0;
-            font-size: 0.9em;
-            color: #f0e68c;
-        }
-
         main {
-            padding: 10px;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 10px;
-            justify-content: center;
-            align-items: flex-start;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 10px;
+            padding: 10px;
+            align-items: center;
         }
 
-        .news-item {
+        .box {
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 8px;
-            margin: 0;
-            padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1em;
         }
 
-        .news-item:hover {
-            transform: translateY(-5px);
+        .discord-logo {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/9/98/Discord_logo.svg') no-repeat center;
+            background-size: contain;
+            width: 100%;
+            height: 100%;
         }
 
-        .news-item h2 {
-            font-size: 1.2em;
-            color: #ff4500;
-            margin: 5px 0;
+        .update-info {
+            font-size: 1em;
+            text-align: left;
         }
 
-        .news-item p {
-            font-size: 0.9em;
-            color: #f8f8f2;
-            margin: 5px 0;
-        }
-
-        .news-item a {
+        .update-info h2 {
+            font-size: 1.3em;
             color: #ffd700;
-            text-decoration: none;
-            font-size: 0.9em;
         }
 
-        footer {
-            margin-top: 5px;
-            padding: 5px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #f0e68c;
-            font-size: 0.8em;
+        .update-info p {
+            color: #f0f0f0;
+        }
+
+        .server-status {
+            font-size: 1.1em;
+            color: #00ffcc;
         }
     </style>
 </head>
 <body>
-    <div class="snowflake"></div>
-    <div class="snowflake"></div>
-    <div class="snowflake"></div>
-    <div class="snowflake"></div>
-    <div class="snowflake"></div>
-
     <header>
         <h1>Latest Updates</h1>
-        <p>Stay updated with the latest updates, events, and announcements!</p>
     </header>
     <main>
-        <div class="news-item">
-            <h2>🎉 New Update Released! 🎉</h2>
-            <p>Version 1.2.0 is now live! Explore the new features and improvements in our latest update.</p>
+        <div class="box">
+            <div class="discord-logo"></div>
         </div>
-        <div class="news-item">
-            <h2>⚔️ Event: Battle of Azeroth ⚔️</h2>
-            <p>Join us this weekend for an epic event! Conquer dungeons, earn rewards, and prove your might.</p>
+        <div class="box update-info">
+            <h2>🎉 Version 1.2.0 Released!</h2>
+            <p>Explore new features and improvements in our latest update. Enjoy enhanced performance and exciting new content!</p>
         </div>
-        <div class="news-item">
-            <h2>📢 Announcement 📢</h2>
-            <p>We are excited to introduce new homebrew content coming soon! Stay tuned for more details.</p>
-        </div>
-        <div class="news-item">
-            <h2>🔥 Hotfix Incoming 🔥</h2>
-            <p>We will be applying a hotfix to address known issues. Expect downtime of 1 hour.</p>
-            <a href="#">Learn more</a>
-        </div>
-        <div class="news-item">
-            <h2>🌟 Community Spotlight 🌟</h2>
-            <p>This week, we feature the amazing creations of our talented players. Check it out!</p>
-            <a href="#">View gallery</a>
-        </div>
-        <div class="news-item">
-            <h2>🛠️ Maintenance Alert 🛠️</h2>
-            <p>Scheduled maintenance is planned for next Monday. Please plan your activities accordingly.</p>
-            <a href="#">Maintenance details</a>
+        <div class="box server-status">
+            <p>🔵 Server Status: Online</p>
+            <p>Players Online: 128</p>
         </div>
     </main>
-    <footer>
-        &copy; 2024 World of WarPulse. All rights reserved.
-    </footer>
 </body>
 </html>
