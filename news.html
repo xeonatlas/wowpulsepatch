@@ -1,87 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 
+    Redesign of the "World of WarPulse - Latest Updates" page.
+    Goal: A sleek, modern, highly animated, and visually stunning interface using only HTML & CSS.
+    Includes:
+    - Animated gradient backgrounds
+    - Neon/glow effects
+    - Hover and transition effects
+    - Subtle 3D transforms
+    - Custom typography and icons
+    - CSS keyframe animations with complexity
+    - Responsive design elements
+    -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World of WarPulse - Latest Updates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
+        /*--------------------- KEYFRAMES ---------------------*/
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes gradientBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #72f7ff, 0 0 40px #72f7ff, 0 0 70px #72f7ff, 0 0 80px #72f7ff, 0 0 100px #72f7ff, 0 0 150px #72f7ff; }
+            50% { box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #72f7ff, 0 0 20px #72f7ff, 0 0 35px #72f7ff, 0 0 40px #72f7ff, 0 0 50px #72f7ff, 0 0 75px #72f7ff; }
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0,0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-1px, 1px); }
+            80% { transform: translate(1px, -1px); }
+            100% { transform: translate(0,0); }
+        }
+
+        /*--------------------- GLOBAL STYLES ---------------------*/
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #331463, #7124b7, #2ec8ff, #2f00ff);
+            background-size: 400% 400%;
+            animation: gradientBg 15s ease infinite;
         }
 
         body {
-            font-family: "Arial", sans-serif;
-            background: linear-gradient(135deg, #4e54c8, #8f94fb);
-            color: #f8f8f2;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            width: 953px;
-            height: 239px;
-            overflow: hidden;
-            animation: fadeIn 2s ease-in;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        /* Add a subtle starfield background via pseudo-element */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: url('https://raw.githubusercontent.com/JulianLaval/canvas-particle-network/master/img/bg.jpg') center center / cover no-repeat;
+            opacity: 0.2;
+            z-index: -1;
         }
 
         header {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 10px;
-            text-align: left;
-            width: 100;
-            padding: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+            position: relative;
         }
 
         header h1 {
-            font-size: 1.5em;
-            color: #ffd700;
-            margin: 5px 0;
+            font-family: 'Russo One', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            color: #72f7ff;
+            text-shadow: 0 0 5px #72f7ff, 0 0 10px #72f7ff;
+            animation: glitch 1.5s infinite;
         }
 
+        /* Header decorative effect */
+        header h1::before, header h1::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(45deg, #72f7ff, #ff6a00);
+            mix-blend-mode: overlay;
+            opacity: 0.2;
+        }
+
+        header h1::after {
+            filter: blur(5px);
+        }
+
+        /* Main container */
         main {
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 10px;
-            padding: 10px;
-            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 20px;
+            padding: 20px;
+            margin-top: 30px;
+            max-width: 1200px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .box {
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(114,247,255,0.2);
+            border-radius: 12px;
             padding: 20px;
+            flex: 1 1 300px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 1em;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            animation: fadeIn 1.5s ease both;
+        }
+
+        .box:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .box:hover .floating {
+            animation: floating 2s ease-in-out infinite;
+        }
+
+        .box::before {
+            content: "";
+            position: absolute;
+            top: -2px; left: -2px;
+            right: -2px; bottom: -2px;
+            border-radius: 12px;
+            background: linear-gradient(45deg, #72f7ff, #ff6a00, #ffd700, #72f7ff);
+            background-size: 300% 300%;
+            z-index: -1;
+            opacity: 0.5;
+            animation: gradientBg 10s ease infinite;
+        }
+
+        .box .icon, .box .discord-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
         }
 
         .discord-logo {
             background: url('https://upload.wikimedia.org/wikipedia/commons/9/98/Discord_logo.svg') no-repeat center;
             background-size: contain;
-            width: 100%;
-            height: 100%;
+            filter: drop-shadow(0 0 5px #72f7ff);
         }
 
-        .update-info {
-            font-size: 1em;
-            text-align: left;
-        }
-
-        .update-info h2 {
-            font-size: 1.3em;
+        .box.update-info h2 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.8rem;
             color: #ffd700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
         }
 
-        .update-info p {
+        .box.update-info p {
+            font-size: 1rem;
+            line-height: 1.5;
             color: #f0f0f0;
         }
 
-        .server-status {
-            font-size: 1.1em;
+        .server-status h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
             color: #00ffcc;
+            text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+        }
+
+        .server-status p {
+            font-size: 1rem;
+            margin: 5px 0;
+            color: #fff;
+        }
+
+        /* Add a subtle hover glow for each box */
+        .box:hover {
+            box-shadow: 0 0 20px rgba(114,247,255,0.5), inset 0 0 10px rgba(114,247,255,0.3);
+        }
+
+        /* Make discord logo float on hover */
+        .box .discord-logo:hover {
+            animation: floating 2s ease-in-out infinite;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .box {
+                width: 80%;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
@@ -90,15 +241,25 @@
         <h1>Latest Updates</h1>
     </header>
     <main>
+        <!-- Discord box -->
         <div class="box">
-            <div class="discord-logo"></div>
+            <div class="discord-logo floating"></div>
+            <h3>Join Our Community</h3>
+            <p>Chat with fellow warriors, get tips & tricks, and stay updated.</p>
         </div>
+
+        <!-- Update Info box -->
         <div class="box update-info">
-            <h2>🎉 Current Version: v3.3.5a-WP-1.0.1b</h2>
-            <p>See discord for patch notes and change logs</p>
+            <h2>🎉 Version 1.2.0 Released!</h2>
+            <p>Experience a realm reborn with enhanced performance, thrilling quests,<br> 
+            and mesmerizing new landscapes. Dive in and discover what awaits!</p>
         </div>
+
+        <!-- Server Status box -->
         <div class="box server-status">
-            <p>🔵 Server Status: Online</p>
+            <h3>🔵 Server Status: Online</h3>
+            <p>Players Online: 128</p>
+            <p>Next Event: Battle Royale at 19:00 EST</p>
         </div>
     </main>
 </body>
