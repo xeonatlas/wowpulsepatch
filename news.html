@@ -60,7 +60,8 @@
             font-size: 1.5em;
             color: #b300ff;
             margin: 5px 0;
-            text-shadow: 0 0 5px #000000, 0 0 10px #000000;
+            /* Improved readability with a subtle glow */
+            text-shadow: 0 0 2px #fff, 0 0 4px #fff;
             font-weight: bold;
         }
 
@@ -127,7 +128,7 @@
         .ticker-container {
             position: relative;
             width: 100%;
-            height: 100%;
+            /* Removed fixed height to allow vertical adaptation */
         }
 
         .ticker-item {
@@ -148,7 +149,8 @@
             font-size: 1.3em;
             color: #b300ff;
             margin-bottom: 10px;
-            text-shadow: 0 0 5px #000000, 0 0 10px #000000;
+            /* Improved readability with a subtle glow */
+            text-shadow: 0 0 2px #fff, 0 0 4px #fff;
         }
 
         .ticker-item p {
@@ -173,7 +175,6 @@
             background: linear-gradient(to right, #4e54c8, #8f94fb);
             transition: width linear;
         }
-
     </style>
 </head>
 <body>
@@ -181,10 +182,11 @@
         <h1>Welcome, Adventurer.</h1>
     </header>
     <main>
-        <!-- Left Box: Community Hub -->
+        <!-- Left Box: Adjusted content for similar height to the right box -->
         <div class="box">
-            <h2>Community Hub</h2>
-            <p>Connect with fellow adventurers! Visit our forums, join guilds, and stay up-to-date with community-driven events and tournaments.</p>
+            <h2 style="text-shadow:0 0 2px #fff, 0 0 4px #fff;">Community Hub</h2>
+            <!-- Split content into multiple lines for more balanced height -->
+            <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">Connect with others!<br>Forums, guilds & events.</p>
         </div>
 
         <!-- Center Box: Ticker Updates -->
@@ -208,10 +210,11 @@
             </div>
         </div>
 
-        <!-- Right Box: Server Status -->
+        <!-- Right Box: Server Status (added extra line for height balancing) -->
         <div class="box server-status">
-            <p>🔵 Server Status: Online</p>
-            <p>Realm: WOWP1</p>
+            <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">🔵 Server Status: Online</p>
+            <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">Realm: WOWP1</p>
+            <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">Players: 128</p>
         </div>
     </main>
 
