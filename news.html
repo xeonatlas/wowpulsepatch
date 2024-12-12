@@ -47,7 +47,7 @@
         }
 
         header {
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 5px 10px;
             margin-top: 5px;
             border-radius: 5px;
@@ -59,8 +59,7 @@
             font-size: 1.5em;
             color: #b300ff;
             margin: 5px 0;
-            /* Change white shadow to black */
-            text-shadow: 0 0 2px #505559, 0 0 4px #505559;
+            text-shadow: 0 0 2px #d1d355, 0 0 4px #d1d355;
             font-weight: bold;
         }
 
@@ -76,7 +75,7 @@
         }
 
         .box {
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.8);
             border-radius: 8px;
             padding: 20px;
             display: flex;
@@ -127,6 +126,7 @@
         .ticker-container {
             position: relative;
             width: 100%;
+            z-index: 1; /* Ensure that the ticker items appear above the bar */
         }
 
         .ticker-item {
@@ -136,6 +136,7 @@
             opacity: 0;
             transition: opacity 1s ease;
             width: 100%;
+            z-index: 2; /* Ticker items above progress bar */
         }
 
         .ticker-item.active {
@@ -147,8 +148,7 @@
             font-size: 1.3em;
             color: #b300ff;
             margin-bottom: 10px;
-            /* Change white shadow to black */
-            text-shadow: 0 0 2px #505559, 0 0 4px #505559;
+            text-shadow: 0 0 2px #d1d355, 0 0 4px #d1d355;
         }
 
         .ticker-item p {
@@ -165,6 +165,7 @@
             background-color: rgba(255,255,255,0.2);
             border-radius: 5px;
             overflow: hidden;
+            z-index: 1; /* Ensure this is behind the ticker text and link */
         }
 
         .progress-bar {
@@ -180,8 +181,9 @@
             text-decoration: none;
             font-weight: bold;
             margin-top: 10px;
-            /* glow */
-            text-shadow: 0 0 2px #505559, 0 0 4px #505559;
+            text-shadow: 0 0 2px #d1d355, 0 0 4px #d1d355;
+            position: relative;
+            z-index: 3; /* Ensure the link is above everything else in the ticker */
         }
 
         .box a:hover {
@@ -197,7 +199,7 @@
     <main>
         <!-- Left Box -->
         <div class="box">
-            <h2 style="text-shadow:0 0 2px #505559, 0 0 4px #505559;">Register now!</h2>
+            <h2 style="text-shadow:0 0 2px #d1d355, 0 0 4px #d1d355;">Register now!</h2>
             <p style="text-shadow:none; font-size:0.95em; line-height:0.4em;">Connect with others!</p>
             <p style="text-shadow:none; font-size:0.95em; line-height:0.4em;">Start your Adventure!</p>
             <a href="https://play.warpulse.com/register" target="_blank">Register</a>
@@ -246,7 +248,7 @@
             currentIndex = (currentIndex + 1) % items.length;
             items[currentIndex].classList.add('active');
 
-            // Reset // animate progress bar
+            // Reset and animate progress bar
             progressBar.style.transition = 'none';
             progressBar.style.width = '0%';
             setTimeout(() => {
