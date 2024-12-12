@@ -60,7 +60,7 @@
             color: #b300ff;
             margin: 5px 0;
             /* Change white shadow to black */
-            text-shadow: 0 0 2px #000, 0 0 4px #000;
+            text-shadow: 0 0 2px #5eaee7, 0 0 4px #5eaee7;
             font-weight: bold;
         }
 
@@ -148,7 +148,7 @@
             color: #b300ff;
             margin-bottom: 10px;
             /* Change white shadow to black */
-            text-shadow: 0 0 2px #000, 0 0 4px #000;
+            text-shadow: 0 0 2px #5eaee7, 0 0 4px #5eaee7;
         }
 
         .ticker-item p {
@@ -174,14 +174,14 @@
             transition: width linear;
         }
 
-        /* Style the link in the left box */
+        /* Link styles for box a */
         .box a {
             color: #b300ff;
             text-decoration: none;
             font-weight: bold;
             margin-top: 10px;
-            /* Add a slight glow for cool effect */
-            text-shadow: 0 0 2px #000, 0 0 4px #000;
+            /* glow */
+            text-shadow: 0 0 2px #5eaee7, 0 0 4px #5eaee7;
         }
 
         .box a:hover {
@@ -195,12 +195,12 @@
         <h1>Welcome, Adventurer.</h1>
     </header>
     <main>
-        <!-- Left Box: Added a clickable link -->
+        <!-- Left Box -->
         <div class="box">
-            <h2 style="text-shadow:0 0 2px #000, 0 0 4px #000;">Community Hub</h2>
-            <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">Connect with others!</p>
-            <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">Forums, guilds & events.</p>
-            <a href="https://example.com/forums" target="_blank">Visit Forums</a>
+            <h2 style="text-shadow:0 0 2px #5eaee7, 0 0 4px #5eaee7;">Register now!</h2>
+            <p style="text-shadow:none; font-size:0.95em; line-height:0.4em;">Connect with others!</p>
+            <p style="text-shadow:none; font-size:0.95em; line-height:0.4em;">Start your Adventure!</p>
+            <a href="https://play.warpulse.com/register" target="_blank">Register</a>
         </div>
 
         <!-- Center Box: Ticker Updates -->
@@ -208,7 +208,8 @@
             <div class="ticker-container">
                 <div class="ticker-item active">
                     <h2>⚔️ Latest Version: v3.3.5a-WP-1.0.1b</h2>
-                    <p>Released 2024-12-07 - Improved drop rates, Frozen Pulse event, and more! Full details @ https://discord.gg/warpulse</p>
+                    <p>Released 2024-12-07 - Improved drop rates, Frozen Pulse event, and more! Full details on</p>
+                    <a href="https://discord.gg/warpulse" target="_blank">Discord🎤</a>
                 </div>
                 <div class="ticker-item">
                     <h2>🐞 Known Issues</h2>
@@ -226,9 +227,9 @@
 
         <!-- Right Box: Server Status -->
         <div class="box server-status">
-            <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">🔵 Server Status: Online</p>
-            <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">Realm: WOWP1</p>
-            <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">Players: 128</p>
+            <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">🟢 Server Status: Online</p>
+            <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">Realm: WOWP1🟢</p>
+            <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">With 💖 from atlas🌌</p>
         </div>
     </main>
 
@@ -245,7 +246,7 @@
             currentIndex = (currentIndex + 1) % items.length;
             items[currentIndex].classList.add('active');
 
-            // Reset and animate progress bar
+            // Reset // animate progress bar
             progressBar.style.transition = 'none';
             progressBar.style.width = '0%';
             setTimeout(() => {
@@ -254,7 +255,7 @@
             }, 50);
         }
 
-        // Initial progress bar animation
+        // Initial bar animation
         setTimeout(() => {
             progressBar.style.transition = `width ${tickerInterval}ms linear`;
             progressBar.style.width = '100%';
