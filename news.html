@@ -59,7 +59,8 @@
             font-size: 1.5em;
             color: #b300ff;
             margin: 5px 0;
-            text-shadow: 0 0 2px #fff, 0 0 4px #fff;
+            /* Change white shadow to black */
+            text-shadow: 0 0 2px #000, 0 0 4px #000;
             font-weight: bold;
         }
 
@@ -146,7 +147,8 @@
             font-size: 1.3em;
             color: #b300ff;
             margin-bottom: 10px;
-            text-shadow: 0 0 2px #fff, 0 0 4px #fff;
+            /* Change white shadow to black */
+            text-shadow: 0 0 2px #000, 0 0 4px #000;
         }
 
         .ticker-item p {
@@ -171,6 +173,21 @@
             background: linear-gradient(to right, #4e54c8, #8f94fb);
             transition: width linear;
         }
+
+        /* Style the link in the left box */
+        .box a {
+            color: #b300ff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            /* Add a slight glow for cool effect */
+            text-shadow: 0 0 2px #000, 0 0 4px #000;
+        }
+
+        .box a:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
@@ -178,11 +195,12 @@
         <h1>Welcome, Adventurer.</h1>
     </header>
     <main>
-        <!-- Left Box: Adjusted text into multiple lines -->
+        <!-- Left Box: Added a clickable link -->
         <div class="box">
-            <h2 style="text-shadow:0 0 2px #fff, 0 0 4px #fff;">Community Hub</h2>
+            <h2 style="text-shadow:0 0 2px #000, 0 0 4px #000;">Community Hub</h2>
             <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">Connect with others!</p>
             <p style="text-shadow:none; font-size:0.95em; line-height:1.4em;">Forums, guilds & events.</p>
+            <a href="https://example.com/forums" target="_blank">Visit Forums</a>
         </div>
 
         <!-- Center Box: Ticker Updates -->
