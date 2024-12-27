@@ -2,14 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Added meta tags to prevent caching -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World of WarPulse - Latest Updates</title>
-
     <style>
         /* KEYFRAMES */
         @keyframes fadeIn {
@@ -24,6 +21,13 @@
             0% { box-shadow: 0 0 5px #4e54c8, 0 0 10px #4e54c8; }
             50% { box-shadow: 0 0 10px #8f94fb, 0 0 20px #8f94fb; }
             100% { box-shadow: 0 0 5px #4e54c8, 0 0 10px #4e54c8; }
+        }
+        @keyframes glowingText {
+            0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.9), 0 0 10px rgba(79, 146, 255, 0.8), 0 0 20px rgba(79, 146, 255, 0.6); }
+            25% { text-shadow: 0 0 5px rgba(79, 146, 255, 0.8), 0 0 15px rgba(79, 176, 255, 0.8), 0 0 30px rgba(79, 176, 255, 0.6); }
+            50% { text-shadow: 0 0 5px rgba(79, 176, 255, 0.8), 0 0 20px rgba(119, 196, 255, 0.8), 0 0 40px rgba(119, 196, 255, 0.6); }
+            75% { text-shadow: 0 0 5px rgba(119, 196, 255, 0.8), 0 0 15px rgba(79, 176, 255, 0.8), 0 0 30px rgba(79, 176, 255, 0.6); }
+            100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.9), 0 0 10px rgba(79, 146, 255, 0.8), 0 0 20px rgba(79, 146, 255, 0.6); }
         }
 
         body {
@@ -43,12 +47,6 @@
             align-items: center;
             box-sizing: border-box;
             animation: fadeIn 2s ease-in;
-        }
-
-        body::before, body::after {
-            content: "";
-            position: absolute;
-            border: none;
         }
 
         header {
@@ -131,7 +129,7 @@
         .ticker-container {
             position: relative;
             width: 100%;
-            z-index: 1; /* Ensure that the ticker items appear above the bar */
+            z-index: 1;
         }
 
         .ticker-item {
@@ -141,7 +139,7 @@
             opacity: 0;
             transition: opacity 1s ease;
             width: 100%;
-            z-index: 2; /* Ticker items above progress bar */
+            z-index: 2;
         }
 
         .ticker-item.active {
@@ -170,7 +168,7 @@
             background-color: rgba(255,255,255,0.2);
             border-radius: 5px;
             overflow: hidden;
-            z-index: 1; /* Ensure this is behind the ticker text and link */
+            z-index: 1;
         }
 
         .progress-bar {
@@ -180,7 +178,19 @@
             transition: width linear;
         }
 
-        /* Link styles for box a */
+        .extended-highlight {
+            background: linear-gradient(to right, #8f94fb, #4e54c8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 
+                0 0 5px rgba(255, 255, 255, 0.9), 
+                0 0 10px rgba(79, 146, 255, 0.8), 
+                0 0 20px rgba(79, 146, 255, 0.6);
+            font-weight: bold;
+            animation: glowingText 3s linear infinite;
+            position: relative;
+        }
+
         .box a {
             color: #9eceff;
             text-decoration: none;
@@ -188,13 +198,12 @@
             margin-top: 10px;
             text-shadow: 0 0 2px #000000, 0 0 4px #000000;
             position: relative;
-            z-index: 3; /* Ensure the link is above everything else in the ticker */
+            z-index: 3;
         }
 
         .box a:hover {
             text-decoration: underline;
         }
-
     </style>
 </head>
 <body>
@@ -202,7 +211,6 @@
         <h1>Welcome, Adventurer.</h1>
     </header>
     <main>
-        <!-- Left Box -->
         <div class="box">
             <h2 style="text-shadow:0 0 2px #000000, 0 0 4px #000000;">Register now!</h2>
             <p style="text-shadow:none; font-size:0.95em; line-height:0.1em;">Connect with others!</p>
@@ -210,7 +218,6 @@
             <a href="https://play.warpulse.com/register" target="_blank">Register</a>
         </div>
 
-        <!-- Center Box: Ticker Updates -->
         <div class="box update-info">
             <div class="ticker-container">
                 <div class="ticker-item active">
@@ -222,8 +229,8 @@
                     <p>No known issues at this time.</p>
                 </div>
                 <div class="ticker-item">
-                    <h2>❄️ Holiday Event Begins</h2>
-                    <p>Frozen Pulse is now live! Earn 50% extra XP on quests and kills, and enjoy 25% faster mounts!</p>
+                    <h2>❄️ Holiday Event <span class="extended-highlight">Extended</span></h2>
+                    <p>Frozen Pulse is live through the New Year! Earn 50% extra XP on quests and kills, and enjoy 25% faster mounts!</p>
                 </div>
                 <div class="progress-bar-container">
                     <div class="progress-bar"></div>
@@ -231,7 +238,6 @@
             </div>
         </div>
 
-        <!-- Right Box: Server Status -->
         <div class="box server-status">
             <p style="text-shadow:none; font-size:0.95em; line-height:0.05em;">🟢 Server Status: Online</p>
             <p style="text-shadow:none; font-size:0.95em; line-height:0.05em;">Realm: WOWP1🟢</p>
@@ -240,9 +246,7 @@
     </main>
 
     <script>
-        // Adjust ticker interval (in milliseconds)
         let tickerInterval = 10000; // 10 seconds
-
         const items = document.querySelectorAll('.ticker-item');
         const progressBar = document.querySelector('.progress-bar');
         let currentIndex = 0;
@@ -252,7 +256,6 @@
             currentIndex = (currentIndex + 1) % items.length;
             items[currentIndex].classList.add('active');
 
-            // Reset and animate progress bar
             progressBar.style.transition = 'none';
             progressBar.style.width = '0%';
             setTimeout(() => {
@@ -261,7 +264,6 @@
             }, 50);
         }
 
-        // Initial bar animation
         setTimeout(() => {
             progressBar.style.transition = `width ${tickerInterval}ms linear`;
             progressBar.style.width = '100%';
