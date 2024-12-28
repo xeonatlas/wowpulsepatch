@@ -19,6 +19,17 @@
             background: transparent;
             color: #f8f8f2;
             width: 953px;
+            opacity: 0; /* Initial opacity for fade-in */
+            animation: fadeIn 3s ease-in-out forwards; /* Apply fade-in animation */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         header {
@@ -178,7 +189,6 @@
             box-shadow: 0 0 5px #4CAF50;
         }
 
-        /* Highlight class for specific words */
         .highlight {
             background: linear-gradient(90deg, #4e54c8, #8f94fb);
             -webkit-background-clip: text;
@@ -208,7 +218,7 @@
             <div class="ticker-container">
                 <div class="ticker-item active">
                     <h2>⚔️ Latest Version: v3.3.5a-WP-1.0.2</h2>
-                    <p>Released 2024-12-20 - Full details on <a href="https://discord.gg/warpulse" target="_blank" style="color: #9eceff; text-decoration: none;">Discord🎤</a></p>
+                    <p>Released 2024-12-20 - Full details on <a href="https://discord.gg/warpulse" target="_blank" style="color: #9eceff; text-decoration: none;">Discord 🎤</a></p>
                 </div>
                 <div class="ticker-item">
                     <h2>🐞 Known Issues</h2>
@@ -229,56 +239,5 @@
             <p>🟢 <span class="status-text">Online</span></p>
         </div>
     </main>
-    <script>
-        const items = document.querySelectorAll('.ticker-item');
-        const progressBar = document.querySelector('.progress-bar');
-        const arrowLeft = document.querySelector('.arrow-left');
-        const arrowRight = document.querySelector('.arrow-right');
-        const updateInfoBox = document.querySelector('.update-info');
-        let currentIndex = 0;
-        const interval = 10000;
-        let autoScrollInterval;
-
-        function updateTicker() {
-            items.forEach((item, index) => {
-                item.classList.toggle('active', index === currentIndex);
-            });
-
-            const activeItem = items[currentIndex];
-            updateInfoBox.style.height = activeItem.offsetHeight + "px";
-
-            progressBar.style.transition = 'none';
-            progressBar.style.width = '0%';
-            setTimeout(() => {
-                progressBar.style.transition = `width ${interval}ms linear`;
-                progressBar.style.width = '100%';
-            }, 50);
-        }
-
-        function resetAutoScroll() {
-            clearInterval(autoScrollInterval);
-            autoScrollInterval = setInterval(() => {
-                showNextItem();
-            }, interval);
-        }
-
-        function showPreviousItem() {
-            currentIndex = (currentIndex - 1 + items.length) % items.length;
-            updateTicker();
-            resetAutoScroll();
-        }
-
-        function showNextItem() {
-            currentIndex = (currentIndex + 1) % items.length;
-            updateTicker();
-            resetAutoScroll();
-        }
-
-        arrowLeft.addEventListener('click', showPreviousItem);
-        arrowRight.addEventListener('click', showNextItem);
-
-        resetAutoScroll();
-        updateTicker();
-    </script>
 </body>
 </html>
