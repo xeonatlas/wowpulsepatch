@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Pragma" no-cache />
     <meta http-equiv="Expires" content="0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World of WarPulse - Latest Updates</title>
@@ -19,8 +19,8 @@
             background: transparent;
             color: #f8f8f2;
             width: 953px;
-            opacity: 0; /* Initial opacity for fade-in */
-            animation: fadeIn 3s ease-in-out forwards; /* Apply fade-in animation */
+            opacity: 0; /* Fade-in animation starts here */
+            animation: fadeIn 3s ease-in-out forwards;
         }
 
         @keyframes fadeIn {
@@ -187,6 +187,34 @@
             margin-left: 5px;
             font-size: 1em;
             box-shadow: 0 0 5px #4CAF50;
+        }
+
+        a {
+            color: #9eceff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background: linear-gradient(90deg, #4e54c8, #8f94fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            position: relative;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                text-shadow: 0 0 5px #8f94fb, 0 0 10px #8f94fb, 0 0 15px #4e54c8;
+            }
+            50% {
+                text-shadow: 0 0 10px #8f94fb, 0 0 20px #8f94fb, 0 0 25px #4e54c8;
+            }
         }
     </style>
 </head>
