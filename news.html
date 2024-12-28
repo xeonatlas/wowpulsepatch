@@ -8,167 +8,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World of WarPulse - Latest Updates</title>
     <style>
-        /* KEYFRAMES */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: scale(0.95); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-        @keyframes hoverFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        @keyframes glowingBorder {
-            0% { box-shadow: 0 0 5px #4e54c8, 0 0 10px #4e54c8; }
-            50% { box-shadow: 0 0 10px #8f94fb, 0 0 20px #8f94fb; }
-            100% { box-shadow: 0 0 5px #4e54c8, 0 0 10px #4e54c8; }
-        }
-        @keyframes glowingText {
-            0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.9), 0 0 10px rgba(79, 146, 255, 0.8), 0 0 20px rgba(79, 146, 255, 0.6); }
-            25% { text-shadow: 0 0 5px rgba(79, 146, 255, 0.8), 0 0 15px rgba(79, 176, 255, 0.8), 0 0 30px rgba(79, 176, 255, 0.6); }
-            50% { text-shadow: 0 0 5px rgba(79, 176, 255, 0.8), 0 0 20px rgba(119, 196, 255, 0.8), 0 0 40px rgba(119, 196, 255, 0.6); }
-            75% { text-shadow: 0 0 5px rgba(119, 196, 255, 0.8), 0 0 15px rgba(79, 176, 255, 0.8), 0 0 30px rgba(79, 176, 255, 0.6); }
-            100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.9), 0 0 10px rgba(79, 146, 255, 0.8), 0 0 20px rgba(79, 146, 255, 0.6); }
-        }
-
         body {
             font-family: "Arial", sans-serif;
             margin: 0;
             padding: 0;
-            width: 953px;
-            height: 339px;
-            overflow: hidden;
-            background: transparent;
-            position: relative;
-            color: #f8f8f2;
-            text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
             align-items: center;
-            box-sizing: border-box;
-            animation: fadeIn 2s ease-in;
+            justify-content: flex-start;
+            background: transparent;
+            color: #f8f8f2;
+            width: 953px;
         }
 
         header {
             background-color: rgba(0, 0, 0, 0.8);
-            padding: 5px 10px;
-            margin-top: 5px;
+            padding: 10px;
+            margin: 20px 0;
             border-radius: 5px;
             border: 1px solid #8f94fb;
             box-shadow: 0 0 10px #8f94fb;
         }
 
         header h1 {
+            margin: 0;
             font-size: 1.5em;
             color: #9eceff;
-            margin: 5px 0;
-            text-shadow: 0 0 2px #000000, 0 0 4px #000000;
-            font-weight: bold;
+            text-shadow: 0 0 2px #000, 0 0 4px #000;
         }
 
         main {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            display: flex;
             gap: 10px;
-            padding: 10px;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
+            width: 90%;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
         .box {
-            background-color: rgba(0, 0, 0, 0.8);
+            flex: 1;
+            background-color: rgba(0, 0, 0, 0.9);
             border-radius: 8px;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            text-align: center;
             color: #ffffff;
             font-size: 1em;
-            position: relative;
-            transition: transform 0.3s ease;
+            box-shadow: 0 0 10px #4e54c8;
             border: 1px solid #4e54c8;
+            position: relative;
         }
 
-        .box:hover {
-            animation: hoverFloat 1.5s ease-in-out infinite;
-        }
-
-        .box::before {
-            content: "";
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            border-radius: 8px;
-            border: 2px solid #4e54c8;
-            animation: glowingBorder 3s infinite;
-            pointer-events: none;
-        }
-
-        .box::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 2px solid #9eceff;
-            border-radius: 8px;
-            top: 0; left: 0;
-            pointer-events: none;
-            opacity: 0.5;
-            box-shadow: inset 0 0 10px #3a2f71;
-        }
-
-        /* Ticker Styles */
         .update-info {
-            text-align: left;
+            flex: 2;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-self: flex-start;
+            transition: height 0.5s ease-in-out;
         }
 
         .ticker-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             position: relative;
-            width: 100%;
-            z-index: 1;
         }
 
         .ticker-item {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 1s ease;
-            width: 100%;
-            z-index: 2;
+            display: none;
+            text-align: center;
         }
 
         .ticker-item.active {
-            opacity: 1;
-            position: relative;
-        }
-
-        .ticker-item h2 {
-            font-size: 1.3em;
-            color: #9eceff;
-            margin-bottom: 10px;
-            text-shadow: 0 0 2px #000000, 0 0 4px #000000;
-        }
-
-        .ticker-item p {
-            color: #f0f0f0;
-            line-height: 1.4em;
+            display: block;
         }
 
         .progress-bar-container {
-            position: absolute;
-            bottom: 5px;
-            left: 10px;
-            right: 10px;
+            width: 100%;
             height: 5px;
-            background-color: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 5px;
             overflow: hidden;
-            z-index: 1;
+            position: absolute;
+            bottom: 0;
+            left: 0;
         }
 
         .progress-bar {
@@ -178,31 +105,66 @@
             transition: width linear;
         }
 
-        .extended-highlight {
-            background: linear-gradient(to right, #8f94fb, #4e54c8);
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            z-index: 2;
+        }
+
+        .arrow:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .update-info:hover .arrow {
+            display: flex;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+
+        .server-status {
+            align-self: flex-start;
+            height: auto; /* Ensure this box remains fixed */
+        }
+
+        .server-status p {
+            margin: 5px 0;
+        }
+
+        /* Highlight class for specific words */
+        .highlight {
+            background: linear-gradient(90deg, #4e54c8, #8f94fb);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0 0 5px rgba(255, 255, 255, 0.9), 
-                0 0 10px rgba(79, 146, 255, 0.8), 
-                0 0 20px rgba(79, 146, 255, 0.6);
             font-weight: bold;
-            animation: glowingText 3s linear infinite;
             position: relative;
+            animation: sparkle 2s infinite;
         }
 
-        .box a {
-            color: #9eceff;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 10px;
-            text-shadow: 0 0 2px #000000, 0 0 4px #000000;
-            position: relative;
-            z-index: 3;
-        }
-
-        .box a:hover {
-            text-decoration: underline;
+        @keyframes sparkle {
+            0%, 100% {
+                text-shadow: 0 0 5px #8f94fb, 0 0 10px #8f94fb, 0 0 15px #4e54c8;
+            }
+            50% {
+                text-shadow: 0 0 10px #8f94fb, 0 0 20px #8f94fb, 0 0 25px #4e54c8;
+            }
         }
     </style>
 </head>
@@ -211,65 +173,84 @@
         <h1>Welcome, Adventurer.</h1>
     </header>
     <main>
-        <div class="box">
-            <h2 style="text-shadow:0 0 2px #000000, 0 0 4px #000000;">Register now!</h2>
-            <p style="text-shadow:none; font-size:0.95em; line-height:0.1em;">Connect with others!</p>
-            <p style="text-shadow:none; font-size:0.95em; line-height:0.1em;">Start your Adventure!</p>
-            <a href="https://play.warpulse.com/register" target="_blank">Register</a>
-        </div>
-
         <div class="box update-info">
+            <button class="arrow arrow-left">&#8249;</button>
             <div class="ticker-container">
                 <div class="ticker-item active">
                     <h2>⚔️ Latest Version: v3.3.5a-WP-1.0.2</h2>
-                    <p>Released 2024-12-20 - Full details on <a href="https://discord.gg/warpulse" target="_blank">Discord🎤</a></p>
+                    <p>Released 2024-12-20 - Full details on <a href="https://discord.gg/warpulse" target="_blank" style="color: #9eceff; text-decoration: none;">Discord🎤</a></p>
                 </div>
                 <div class="ticker-item">
                     <h2>🐞 Known Issues</h2>
                     <p>No known issues at this time.</p>
                 </div>
                 <div class="ticker-item">
-                    <h2>❄️ Holiday Event <span class="extended-highlight">Extended</span></h2>
+                    <h2>❄️ Holiday Event <span class="highlight">Extended</span></h2>
                     <p>Frozen Pulse is live through the New Year! Earn 50% extra XP on quests and kills, and enjoy 25% faster mounts!</p>
                 </div>
-                <div class="progress-bar-container">
-                    <div class="progress-bar"></div>
-                </div>
+            </div>
+            <button class="arrow arrow-right">&#8250;</button>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
             </div>
         </div>
-
         <div class="box server-status">
-            <p style="text-shadow:none; font-size:0.95em; line-height:0.05em;">🟢 Server Status: Online</p>
-            <p style="text-shadow:none; font-size:0.95em; line-height:0.05em;">Realm: WOWP1🟢</p>
-            <p style="text-shadow:none; font-size:0.95em; line-height:0.05em;">With 💖 from atlas🌌</p>
+            <p>🟢 Server Status: Online</p>
+            <p>Realm: WOWP1🟢</p>
+            <p>With 💖 from atlas🌌</p>
         </div>
     </main>
-
     <script>
-        let tickerInterval = 10000; // 10 seconds
         const items = document.querySelectorAll('.ticker-item');
         const progressBar = document.querySelector('.progress-bar');
+        const arrowLeft = document.querySelector('.arrow-left');
+        const arrowRight = document.querySelector('.arrow-right');
+        const updateInfoBox = document.querySelector('.update-info');
         let currentIndex = 0;
+        const interval = 10000;
+        let autoScrollInterval;
 
-        function showNextItem() {
-            items[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % items.length;
-            items[currentIndex].classList.add('active');
+        function updateTicker() {
+            items.forEach((item, index) => {
+                item.classList.toggle('active', index === currentIndex);
+            });
+
+            // Smoothly adjust height based on active content
+            const activeItem = items[currentIndex];
+            updateInfoBox.style.height = activeItem.offsetHeight + "px";
 
             progressBar.style.transition = 'none';
             progressBar.style.width = '0%';
             setTimeout(() => {
-                progressBar.style.transition = `width ${tickerInterval}ms linear`;
+                progressBar.style.transition = `width ${interval}ms linear`;
                 progressBar.style.width = '100%';
             }, 50);
         }
 
-        setTimeout(() => {
-            progressBar.style.transition = `width ${tickerInterval}ms linear`;
-            progressBar.style.width = '100%';
-        }, 50);
+        function resetAutoScroll() {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = setInterval(() => {
+                showNextItem();
+            }, interval);
+        }
 
-        setInterval(showNextItem, tickerInterval);
+        function showPreviousItem() {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateTicker();
+            resetAutoScroll();
+        }
+
+        function showNextItem() {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateTicker();
+            resetAutoScroll();
+        }
+
+        arrowLeft.addEventListener('click', showPreviousItem);
+        arrowRight.addEventListener('click', showNextItem);
+
+        resetAutoScroll();
+        updateTicker();
     </script>
 </body>
 </html>
