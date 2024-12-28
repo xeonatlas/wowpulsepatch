@@ -141,11 +141,41 @@
 
         .server-status {
             align-self: flex-start;
-            height: auto; /* Ensure this box remains fixed */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 0 10px #4e54c8;
+            border: 1px solid #4e54c8;
+            font-size: 1.2em;
+        }
+
+        .server-status h2 {
+            margin: 0 0 10px 0;
+            color: #9eceff;
+            font-size: 1.2em;
+            text-shadow: 0 0 2px #000, 0 0 4px #000;
         }
 
         .server-status p {
-            margin: 5px 0;
+            margin: 0;
+            color: #ffffff;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .status-text {
+            background-color: #4CAF50;
+            color: #ffffff;
+            border-radius: 4px;
+            padding: 2px 8px;
+            margin-left: 5px;
+            font-size: 1em;
+            box-shadow: 0 0 5px #4CAF50;
         }
 
         /* Highlight class for specific words */
@@ -195,9 +225,8 @@
             </div>
         </div>
         <div class="box server-status">
-            <p>🟢 Server Status: Online</p>
-            <p>Realm: WOWP1🟢</p>
-            <p>With 💖 from atlas🌌</p>
+            <h2>Server Status</h2>
+            <p>🟢 <span class="status-text">Online</span></p>
         </div>
     </main>
     <script>
@@ -215,7 +244,6 @@
                 item.classList.toggle('active', index === currentIndex);
             });
 
-            // Smoothly adjust height based on active content
             const activeItem = items[currentIndex];
             updateInfoBox.style.height = activeItem.offsetHeight + "px";
 
